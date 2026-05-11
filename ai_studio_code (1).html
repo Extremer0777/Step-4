@@ -1,0 +1,1222 @@
+--- START OF FILE index.html ---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step 4 Gym | Patiala's Premium Fitness Destination</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        charcoal: '#1a1a1a',
+                        'charcoal-deep': '#0d0d0d',
+                        'charcoal-light': '#2a2a2a',
+                        lime: '#AAFF00',
+                        'lime-dark': '#88CC00',
+                        'lime-glow': '#CCFF44',
+                    },
+                    fontFamily: {
+                        display: ['Bebas Neue', 'sans-serif'],
+                        body: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background: #0d0d0d; color: #ffffff; overflow-x: hidden; }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1a1a1a; }
+        ::-webkit-scrollbar-thumb { background: #AAFF00; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #CCFF44; }
+
+        .font-display { font-family: 'Bebas Neue', sans-serif; }
+
+        .lime-gradient { background: linear-gradient(135deg, #AAFF00, #88CC00); }
+        .lime-text { background: linear-gradient(135deg, #AAFF00, #CCFF44); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(13,13,13,0.92) 0%, rgba(13,13,13,0.6) 50%, rgba(13,13,13,0.85) 100%);
+        }
+
+        .glow-btn {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .glow-btn::before {
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
+            background: linear-gradient(135deg, #AAFF00, #CCFF44, #AAFF00);
+            border-radius: inherit;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            filter: blur(12px);
+        }
+        .glow-btn:hover::before { opacity: 1; }
+        .glow-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(170, 255, 0, 0.3); }
+
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(170, 255, 0, 0.1);
+            border-color: rgba(170, 255, 0, 0.3);
+        }
+
+        .service-icon {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover .service-icon {
+            transform: scale(1.15) rotate(-5deg);
+            color: #AAFF00;
+        }
+
+        .plan-best {
+            border: 2px solid #AAFF00;
+            position: relative;
+        }
+        .plan-best::before {
+            content: 'BEST VALUE';
+            position: absolute;
+            top: -14px; left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #AAFF00, #88CC00);
+            color: #0d0d0d;
+            padding: 4px 20px;
+            font-weight: 800;
+            font-size: 12px;
+            letter-spacing: 2px;
+            border-radius: 4px;
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .pulse-glow {
+            animation: pulseGlow 2s ease-in-out infinite;
+        }
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(170, 255, 0, 0.2); }
+            50% { box-shadow: 0 0 40px rgba(170, 255, 0, 0.5); }
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-60px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(60px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .slide-in-up {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .visible {
+            opacity: 1 !important;
+            transform: translate(0) !important;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px; height: 4px;
+            background: #AAFF00;
+            border-radius: 50%;
+            opacity: 0;
+            animation: particleFloat 4s ease-in-out infinite;
+        }
+        @keyframes particleFloat {
+            0% { opacity: 0; transform: translateY(0) scale(0); }
+            20% { opacity: 0.8; }
+            100% { opacity: 0; transform: translateY(-200px) scale(1); }
+        }
+
+        .nav-blur {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .trainer-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 60%;
+            background: linear-gradient(to top, #1a1a1a, transparent);
+            z-index: 1;
+        }
+
+        .input-focus:focus {
+            border-color: #AAFF00;
+            box-shadow: 0 0 0 3px rgba(170, 255, 0, 0.15);
+        }
+
+        .tab-active {
+            background: linear-gradient(135deg, #AAFF00, #88CC00);
+            color: #0d0d0d;
+            font-weight: 700;
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, #AAFF00, #CCFF44);
+            transition: width 1s ease;
+        }
+
+        .hero-img-container {
+            position: relative;
+        }
+        .hero-img-container::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 40%, #0d0d0d 100%);
+            z-index: 1;
+        }
+
+        .counter { font-variant-numeric: tabular-nums; }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .shimmer-text {
+            background: linear-gradient(90deg, #AAFF00 0%, #fff 50%, #AAFF00 100%);
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 3s linear infinite;
+        }
+
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        .toast {
+            animation: toastIn 0.4s ease, toastOut 0.4s ease 2.6s forwards;
+        }
+        @keyframes toastIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes toastOut {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(100%); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Toast Container -->
+    <div id="toastContainer" class="fixed top-6 right-6 z-[100] flex flex-col gap-3"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="#" class="flex items-center gap-3">
+                    <div class="w-10 h-10 lime-gradient rounded-lg flex items-center justify-center">
+                        <span class="font-display text-2xl text-charcoal-deep">S4</span>
+                    </div>
+                    <div>
+                        <span class="font-display text-2xl tracking-wider text-white">STEP 4</span>
+                        <span class="font-display text-2xl tracking-wider lime-text"> GYM</span>
+                    </div>
+                </a>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#services" class="text-sm font-medium text-gray-300 hover:text-lime transition-colors duration-300">Services</a>
+                    <a href="#plans" class="text-sm font-medium text-gray-300 hover:text-lime transition-colors duration-300">Plans</a>
+                    <a href="#trainers" class="text-sm font-medium text-gray-300 hover:text-lime transition-colors duration-300">Trainers</a>
+                    <a href="#timings" class="text-sm font-medium text-gray-300 hover:text-lime transition-colors duration-300">Timings</a>
+                    <a href="#portal" class="text-sm font-medium text-gray-300 hover:text-lime transition-colors duration-300">Member Portal</a>
+                    <a href="#location" class="text-sm font-medium text-gray-300 hover:text-lime transition-colors duration-300">Location</a>
+                    <a href="#portal" class="lime-gradient text-charcoal-deep px-6 py-2.5 rounded-lg font-bold text-sm hover:opacity-90 transition-opacity">Join Now</a>
+                </div>
+                <button id="mobileMenuBtn" class="md:hidden text-white text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu fixed inset-0 z-[60] bg-charcoal-deep/98 nav-blur flex flex-col items-center justify-center gap-8">
+        <button id="mobileMenuClose" class="absolute top-6 right-6 text-white text-3xl"><i class="fas fa-times"></i></button>
+        <a href="#services" class="mobile-link font-display text-4xl tracking-wider text-white hover:text-lime transition-colors">SERVICES</a>
+        <a href="#plans" class="mobile-link font-display text-4xl tracking-wider text-white hover:text-lime transition-colors">PLANS</a>
+        <a href="#trainers" class="mobile-link font-display text-4xl tracking-wider text-white hover:text-lime transition-colors">TRAINERS</a>
+        <a href="#timings" class="mobile-link font-display text-4xl tracking-wider text-white hover:text-lime transition-colors">TIMINGS</a>
+        <a href="#portal" class="mobile-link font-display text-4xl tracking-wider text-white hover:text-lime transition-colors">MEMBER PORTAL</a>
+        <a href="#location" class="mobile-link font-display text-4xl tracking-wider text-white hover:text-lime transition-colors">LOCATION</a>
+        <a href="#portal" class="lime-gradient text-charcoal-deep px-10 py-4 rounded-lg font-bold text-lg mt-4">JOIN NOW</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative min-h-screen flex items-center overflow-hidden">
+        <!-- UPDATED Background Image: Moody Front-Facing Intensity -->
+        <div class="absolute inset-0">
+            <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop" alt="Front Face Athlete" class="w-full h-full object-cover">
+            <div class="hero-overlay absolute inset-0"></div>
+        </div>
+
+        <!-- Particles -->
+        <div class="absolute inset-0 pointer-events-none overflow-hidden" id="particles"></div>
+
+        <!-- Diagonal Accent Line -->
+        <div class="absolute top-0 right-0 w-1/2 h-full opacity-10">
+            <div class="absolute top-0 right-20 w-px h-full bg-lime origin-top rotate-12"></div>
+            <div class="absolute top-0 right-40 w-px h-full bg-lime origin-top rotate-12"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-20">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="inline-flex items-center gap-2 bg-lime/10 border border-lime/30 rounded-full px-4 py-2 mb-6 slide-in-left">
+                        <div class="w-2 h-2 bg-lime rounded-full pulse-glow"></div>
+                        <span class="text-lime text-sm font-medium">Patiala's #1 Premium Gym</span>
+                    </div>
+                    <h1 class="font-display text-5xl sm:text-7xl lg:text-8xl leading-[0.9] tracking-wider mb-6 slide-in-left" style="transition-delay: 0.1s">
+                        LEVEL UP<br>YOUR<br><span class="lime-text">FITNESS</span><br>AT <span class="shimmer-text">STEP 4</span><br>PATIALA
+                    </h1>
+                    <p class="text-gray-400 text-lg max-w-md mb-8 slide-in-left" style="transition-delay: 0.2s">
+                        Transform your body with world-class equipment, expert trainers, and an environment built for champions.
+                    </p>
+                    <div class="flex flex-wrap gap-4 slide-in-left" style="transition-delay: 0.3s">
+                        <a href="#portal" class="glow-btn lime-gradient text-charcoal-deep px-8 py-4 rounded-xl font-extrabold text-lg tracking-wide inline-flex items-center gap-3">
+                            START FREE TRIAL <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="#plans" class="border-2 border-white/20 text-white px-8 py-4 rounded-xl font-bold text-lg hover:border-lime hover:text-lime transition-all duration-300 inline-flex items-center gap-3">
+                            VIEW PLANS <i class="fas fa-chevron-down text-sm"></i>
+                        </a>
+                    </div>
+                    <!-- Stats -->
+                    <div class="flex gap-10 mt-12 slide-in-left" style="transition-delay: 0.4s">
+                        <div>
+                            <div class="font-display text-4xl lime-text counter" data-target="500">0</div>
+                            <div class="text-gray-500 text-sm font-medium">Active Members</div>
+                        </div>
+                        <div>
+                            <div class="font-display text-4xl lime-text counter" data-target="15">0</div>
+                            <div class="text-gray-500 text-sm font-medium">Expert Trainers</div>
+                        </div>
+                        <div>
+                            <div class="font-display text-4xl lime-text counter" data-target="8">0</div>
+                            <div class="text-gray-500 text-sm font-medium">Years Legacy</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden lg:flex justify-center items-center slide-in-right">
+                    <div class="relative floating">
+                        <div class="absolute -inset-4 bg-lime/10 rounded-3xl blur-3xl"></div>
+                        <div class="relative w-80 h-[500px] rounded-3xl overflow-hidden border-2 border-lime/20">
+                            <!-- UPDATED Floating Image: Clear Front Face Action Shot -->
+                            <img src="https://images.unsplash.com/photo-1597452485669-2c7bb5fef90d?q=80&w=2069&auto=format&fit=crop" alt="Front Face Focus" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-charcoal-deep via-transparent to-transparent"></div>
+                            <div class="absolute bottom-6 left-6 right-6 z-10">
+                                <div class="bg-charcoal/80 nav-blur rounded-xl p-4 border border-lime/20">
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <div class="w-3 h-3 bg-lime rounded-full animate-pulse"></div>
+                                        <span class="text-lime text-sm font-bold">LIVE SESSION</span>
+                                    </div>
+                                    <p class="text-white text-sm font-medium">Power Lifting Zone — Active Now</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Floating Badge -->
+                        <div class="absolute -top-4 -right-4 bg-charcoal border-2 border-lime/40 rounded-2xl p-4 nav-blur z-10">
+                            <div class="font-display text-3xl lime-text">4.9<span class="text-lg text-white">/5</span></div>
+                            <div class="flex gap-0.5 mt-1">
+                                <i class="fas fa-star text-lime text-xs"></i>
+                                <i class="fas fa-star text-lime text-xs"></i>
+                                <i class="fas fa-star text-lime text-xs"></i>
+                                <i class="fas fa-star text-lime text-xs"></i>
+                                <i class="fas fa-star text-lime text-xs"></i>
+                            </div>
+                            <p class="text-gray-400 text-xs mt-1">Google Rating</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10">
+            <span class="text-gray-500 text-xs uppercase tracking-widest">Scroll</span>
+            <div class="w-6 h-10 border-2 border-gray-600 rounded-full flex justify-center pt-2">
+                <div class="w-1.5 h-3 bg-lime rounded-full animate-bounce"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="relative py-24 lg:py-32">
+        <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-lime/30 to-transparent"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 slide-in-up">
+                <span class="text-lime text-sm font-bold uppercase tracking-[4px]">What We Offer</span>
+                <h2 class="font-display text-5xl sm:text-7xl tracking-wider mt-3">OUR <span class="lime-text">SERVICES</span></h2>
+                <p class="text-gray-400 mt-4 max-w-2xl mx-auto">Everything you need to crush your fitness goals under one roof.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Service 1 -->
+                <div class="card-hover bg-charcoal border border-white/5 rounded-2xl p-8 slide-in-up" style="transition-delay:0.05s">
+                    <div class="service-icon w-16 h-16 bg-lime/10 rounded-2xl flex items-center justify-center mb-6 text-2xl text-lime">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3 class="font-display text-2xl tracking-wider mb-3">STRENGTH TRAINING</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Fully equipped with latest Jerai & Hammer Strength machines for maximum muscle development.</p>
+                </div>
+                <!-- Service 2 -->
+                <div class="card-hover bg-charcoal border border-white/5 rounded-2xl p-8 slide-in-up" style="transition-delay:0.1s">
+                    <div class="service-icon w-16 h-16 bg-lime/10 rounded-2xl flex items-center justify-center mb-6 text-2xl text-lime">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3 class="font-display text-2xl tracking-wider mb-3">CARDIO ZONE</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Premium treadmills, ellipticals, and cycle machines to keep your heart pumping and calories burning.</p>
+                </div>
+                <!-- Service 3 -->
+                <div class="card-hover bg-charcoal border border-white/5 rounded-2xl p-8 slide-in-up" style="transition-delay:0.15s">
+                    <div class="service-icon w-16 h-16 bg-lime/10 rounded-2xl flex items-center justify-center mb-6 text-2xl text-lime">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3 class="font-display text-2xl tracking-wider mb-3">CROSSFIT</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">High-intensity functional training designed to push your limits and build real-world fitness.</p>
+                </div>
+                <!-- Service 4 -->
+                <div class="card-hover bg-charcoal border border-white/5 rounded-2xl p-8 slide-in-up" style="transition-delay:0.2s">
+                    <div class="service-icon w-16 h-16 bg-lime/10 rounded-2xl flex items-center justify-center mb-6 text-2xl text-lime">
+                        <i class="fas fa-hot-tub-person"></i>
+                    </div>
+                    <h3 class="font-display text-2xl tracking-wider mb-3">STEAM ROOM</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Relax and recover in our premium steam room — perfect for post-workout muscle relaxation.</p>
+                </div>
+                <!-- Service 5 -->
+                <div class="card-hover bg-charcoal border border-white/5 rounded-2xl p-8 slide-in-up" style="transition-delay:0.25s">
+                    <div class="service-icon w-16 h-16 bg-lime/10 rounded-2xl flex items-center justify-center mb-6 text-2xl text-lime">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3 class="font-display text-2xl tracking-wider mb-3">PERSONAL TRAINING</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Certified personal trainers crafting customized workout plans tailored to your body and goals.</p>
+                </div>
+                <!-- Service 6 - Hygiene -->
+                <div class="card-hover bg-charcoal border border-white/5 rounded-2xl p-8 slide-in-up" style="transition-delay:0.3s">
+                    <div class="service-icon w-16 h-16 bg-lime/10 rounded-2xl flex items-center justify-center mb-6 text-2xl text-lime">
+                        <i class="fas fa-spray-can-sparkles"></i>
+                    </div>
+                    <h3 class="font-display text-2xl tracking-wider mb-3">CLEAN & HYGIENIC</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Regularly sanitized premises with clean washrooms, fresh towels, and a spotless training environment.</p>
+                </div>
+            </div>
+
+            <!-- Equipment Banner -->
+            <div class="mt-12 bg-gradient-to-r from-charcoal to-charcoal-light border border-lime/20 rounded-2xl p-8 lg:p-12 flex flex-col lg:flex-row items-center gap-8 slide-in-up">
+                <div class="w-20 h-20 lime-gradient rounded-2xl flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-gears text-charcoal-deep text-3xl"></i>
+                </div>
+                <div class="text-center lg:text-left">
+                    <h3 class="font-display text-3xl tracking-wider mb-2">LATEST JERAI & HAMMER STRENGTH EQUIPMENT</h3>
+                    <p class="text-gray-400">As praised by our members — we house the finest and most advanced gym equipment in Patiala for a premium lifting experience.</p>
+                </div>
+                <div class="flex-shrink-0">
+                    <span class="text-lime font-display text-5xl tracking-wider">PREMIUM</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Membership Plans -->
+    <section id="plans" class="relative py-24 lg:py-32 bg-charcoal-deep">
+        <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-lime/30 to-transparent"></div>
+        <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(#AAFF00 1px, transparent 1px); background-size: 40px 40px;"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 slide-in-up">
+                <span class="text-lime text-sm font-bold uppercase tracking-[4px]">Pricing</span>
+                <h2 class="font-display text-5xl sm:text-7xl tracking-wider mt-3">MEMBERSHIP <span class="lime-text">PLANS</span></h2>
+                <p class="text-gray-400 mt-4 max-w-xl mx-auto">Choose the plan that fits your commitment level. All plans include full gym access.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Monthly -->
+                <div class="card-hover bg-charcoal border border-white/5 rounded-2xl p-8 flex flex-col slide-in-up" style="transition-delay:0.1s">
+                    <div class="mb-6">
+                        <span class="text-gray-500 text-sm font-bold uppercase tracking-wider">Monthly</span>
+                        <div class="mt-3 flex items-end gap-2">
+                            <span class="font-display text-6xl text-white">₹2,500</span>
+                            <span class="text-gray-500 text-sm mb-2">/month</span>
+                        </div>
+                    </div>
+                    <div class="w-full h-px bg-white/10 mb-6"></div>
+                    <ul class="space-y-4 mb-8 flex-grow">
+                        <li class="flex items-center gap-3 text-gray-300 text-sm"><i class="fas fa-check text-lime text-xs"></i>Full Gym Access</li>
+                        <li class="flex items-center gap-3 text-gray-300 text-sm"><i class="fas fa-check text-lime text-xs"></i>All Equipment Usage</li>
+                        <li class="flex items-center gap-3 text-gray-300 text-sm"><i class="fas fa-check text-lime text-xs"></i>Cardio Zone Access</li>
+                        <li class="flex items-center gap-3 text-gray-300 text-sm"><i class="fas fa-check text-lime text-xs"></i>Steam Room Access</li>
+                        <li class="flex items-center gap-3 text-gray-500 text-sm"><i class="fas fa-xmark text-gray-600 text-xs"></i>Personal Trainer</li>
+                        <li class="flex items-center gap-3 text-gray-500 text-sm"><i class="fas fa-xmark text-gray-600 text-xs"></i>Diet Plan</li>
+                    </ul>
+                    <button onclick="selectPlan('monthly', 2500, 30)" class="w-full py-4 border-2 border-white/20 rounded-xl font-bold text-white hover:border-lime hover:text-lime transition-all duration-300">SELECT PLAN</button>
+                </div>
+
+                <!-- Quarterly -->
+                <div class="card-hover bg-charcoal border border-white/5 rounded-2xl p-8 flex flex-col slide-in-up" style="transition-delay:0.2s">
+                    <div class="mb-6">
+                        <span class="text-gray-500 text-sm font-bold uppercase tracking-wider">Quarterly</span>
+                        <div class="mt-3 flex items-end gap-2">
+                            <span class="font-display text-6xl text-white">₹6,500</span>
+                            <span class="text-gray-500 text-sm mb-2">/3 months</span>
+                        </div>
+                        <div class="mt-2 inline-block bg-lime/10 text-lime text-xs font-bold px-3 py-1 rounded-full">Save ₹1,000</div>
+                    </div>
+                    <div class="w-full h-px bg-white/10 mb-6"></div>
+                    <ul class="space-y-4 mb-8 flex-grow">
+                        <li class="flex items-center gap-3 text-gray-300 text-sm"><i class="fas fa-check text-lime text-xs"></i>Full Gym Access</li>
+                        <li class="flex items-center gap-3 text-gray-300 text-sm"><i class="fas fa-check text-lime text-xs"></i>All Equipment Usage</li>
+                        <li class="flex items-center gap-3 text-gray-300 text-sm"><i class="fas fa-check text-lime text-xs"></i>Cardio Zone Access</li>
+                        <li class="flex items-center gap-3 text-gray-300 text-sm"><i class="fas fa-check text-lime text-xs"></i>Steam Room Access</li>
+                        <li class="flex items-center gap-3 text-gray-300 text-sm"><i class="fas fa-check text-lime text-xs"></i>Basic Diet Guidance</li>
+                        <li class="flex items-center gap-3 text-gray-500 text-sm"><i class="fas fa-xmark text-gray-600 text-xs"></i>Personal Trainer</li>
+                    </ul>
+                    <button onclick="selectPlan('quarterly', 6500, 90)" class="w-full py-4 border-2 border-white/20 rounded-xl font-bold text-white hover:border-lime hover:text-lime transition-all duration-300">SELECT PLAN</button>
+                </div>
+
+                <!-- Annual - Best Value -->
+                <div class="card-hover plan-best bg-charcoal rounded-2xl p-8 flex flex-col slide-in-up" style="transition-delay:0.3s">
+                    <div class="mb-6">
+                        <span class="text-lime text-sm font-bold uppercase tracking-wider">Annual</span>
+                        <div class="mt-3 flex items-end gap-2">
+                            <span class="font-display text-6xl lime-text">₹18,000</span>
+                            <span class="text-gray-500 text-sm mb-2">/year</span>
+                        </div>
+                        <div class="mt-2 inline-block bg-lime/20 text-lime text-xs font-bold px-3 py-1 rounded-full">Save ₹12,000</div>
+                    </div>
+                    <div class="w-full h-px bg-lime/20 mb-6"></div>
+                    <ul class="space-y-4 mb-8 flex-grow">
+                        <li class="flex items-center gap-3 text-white text-sm"><i class="fas fa-check text-lime text-xs"></i>Full Gym Access</li>
+                        <li class="flex items-center gap-3 text-white text-sm"><i class="fas fa-check text-lime text-xs"></i>All Equipment Usage</li>
+                        <li class="flex items-center gap-3 text-white text-sm"><i class="fas fa-check text-lime text-xs"></i>Cardio Zone Access</li>
+                        <li class="flex items-center gap-3 text-white text-sm"><i class="fas fa-check text-lime text-xs"></i>Steam Room Access</li>
+                        <li class="flex items-center gap-3 text-white text-sm"><i class="fas fa-check text-lime text-xs"></i>Complete Diet Plan</li>
+                        <li class="flex items-center gap-3 text-white text-sm"><i class="fas fa-check text-lime text-xs"></i>5 PT Sessions Free</li>
+                    </ul>
+                    <button onclick="selectPlan('annual', 18000, 365)" class="glow-btn w-full py-4 lime-gradient rounded-xl font-extrabold text-charcoal-deep text-lg">SELECT PLAN</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expert Coaches -->
+    <section id="trainers" class="relative py-24 lg:py-32">
+        <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-lime/30 to-transparent"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 slide-in-up">
+                <span class="text-lime text-sm font-bold uppercase tracking-[4px]">Our Team</span>
+                <h2 class="font-display text-5xl sm:text-7xl tracking-wider mt-3">EXPERT <span class="lime-text">COACHES</span></h2>
+                <p class="text-gray-400 mt-4 max-w-xl mx-auto">Certified professionals who transform beginners into champions.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Trainer 1 -->
+                <div class="card-hover trainer-card relative rounded-2xl overflow-hidden h-[480px] slide-in-up" style="transition-delay:0.1s">
+                    <img src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?w=500&q=80" alt="Trainer" class="w-full h-full object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 p-6 z-10">
+                        <span class="inline-block bg-lime/20 text-lime text-xs font-bold px-3 py-1 rounded-full mb-3">BODYBUILDING</span>
+                        <h3 class="font-display text-3xl tracking-wider">HARPREET SINGH</h3>
+                        <p class="text-gray-400 text-sm mt-1">IFBB Certified | 10+ Years Experience</p>
+                        <p class="text-gray-500 text-xs mt-2">State-level bodybuilding champion specializing in hypertrophy and muscle sculpting programs.</p>
+                        <div class="flex gap-3 mt-4">
+                            <a href="#" class="w-9 h-9 bg-white/10 rounded-lg flex items-center justify-center text-white hover:bg-lime hover:text-charcoal-deep transition-all"><i class="fab fa-instagram text-sm"></i></a>
+                            <a href="#" class="w-9 h-9 bg-white/10 rounded-lg flex items-center justify-center text-white hover:bg-lime hover:text-charcoal-deep transition-all"><i class="fab fa-youtube text-sm"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trainer 2 -->
+                <div class="card-hover trainer-card relative rounded-2xl overflow-hidden h-[480px] slide-in-up" style="transition-delay:0.2s">
+                    <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=500&q=80" alt="Trainer" class="w-full h-full object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 p-6 z-10">
+                        <span class="inline-block bg-lime/20 text-lime text-xs font-bold px-3 py-1 rounded-full mb-3">WEIGHT LOSS</span>
+                        <h3 class="font-display text-3xl tracking-wider">NEHA SHARMA</h3>
+                        <p class="text-gray-400 text-sm mt-1">ACE Certified | 7+ Years Experience</p>
+                        <p class="text-gray-500 text-xs mt-2">Transformation specialist with proven results in sustainable weight loss and body recomposition.</p>
+                        <div class="flex gap-3 mt-4">
+                            <a href="#" class="w-9 h-9 bg-white/10 rounded-lg flex items-center justify-center text-white hover:bg-lime hover:text-charcoal-deep transition-all"><i class="fab fa-instagram text-sm"></i></a>
+                            <a href="#" class="w-9 h-9 bg-white/10 rounded-lg flex items-center justify-center text-white hover:bg-lime hover:text-charcoal-deep transition-all"><i class="fab fa-youtube text-sm"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trainer 3 -->
+                <div class="card-hover trainer-card relative rounded-2xl overflow-hidden h-[480px] slide-in-up" style="transition-delay:0.3s">
+                    <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=500&q=80" alt="Trainer" class="w-full h-full object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 p-6 z-10">
+                        <span class="inline-block bg-lime/20 text-lime text-xs font-bold px-3 py-1 rounded-full mb-3">POWERLIFTING</span>
+                        <h3 class="font-display text-3xl tracking-wider">GURDEEP SINGH</h3>
+                        <p class="text-gray-400 text-sm mt-1">NSCA-CSCS | 12+ Years Experience</p>
+                        <p class="text-gray-500 text-xs mt-2">National-level powerlifter with expertise in strength programming, form correction, and peak performance.</p>
+                        <div class="flex gap-3 mt-4">
+                            <a href="#" class="w-9 h-9 bg-white/10 rounded-lg flex items-center justify-center text-white hover:bg-lime hover:text-charcoal-deep transition-all"><i class="fab fa-instagram text-sm"></i></a>
+                            <a href="#" class="w-9 h-9 bg-white/10 rounded-lg flex items-center justify-center text-white hover:bg-lime hover:text-charcoal-deep transition-all"><i class="fab fa-youtube text-sm"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timings Section -->
+    <section id="timings" class="relative py-24 lg:py-32 bg-charcoal-deep">
+        <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-lime/30 to-transparent"></div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 slide-in-up">
+                <span class="text-lime text-sm font-bold uppercase tracking-[4px]">Schedule</span>
+                <h2 class="font-display text-5xl sm:text-7xl tracking-wider mt-3">GYM <span class="lime-text">TIMINGS</span></h2>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-6 slide-in-up" style="transition-delay:0.1s">
+                <div class="card-hover bg-charcoal border border-white/5 rounded-2xl p-8 text-center">
+                    <div class="w-16 h-16 bg-lime/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-calendar-week text-lime text-2xl"></i>
+                    </div>
+                    <h3 class="font-display text-2xl tracking-wider mb-2">MONDAY — SATURDAY</h3>
+                    <div class="font-display text-4xl lime-text mt-4">05:30 AM</div>
+                    <div class="text-gray-500 my-2">to</div>
+                    <div class="font-display text-4xl lime-text">10:00 PM</div>
+                    <p class="text-gray-500 text-sm mt-4">16.5 Hours Daily</p>
+                </div>
+                <div class="card-hover bg-charcoal border border-white/5 rounded-2xl p-8 text-center">
+                    <div class="w-16 h-16 bg-lime/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-calendar-day text-lime text-2xl"></i>
+                    </div>
+                    <h3 class="font-display text-2xl tracking-wider mb-2">SUNDAY</h3>
+                    <div class="font-display text-4xl lime-text mt-4">08:00 AM</div>
+                    <div class="text-gray-500 my-2">to</div>
+                    <div class="font-display text-4xl lime-text">12:00 PM</div>
+                    <p class="text-gray-500 text-sm mt-4">4 Hours Only</p>
+                </div>
+            </div>
+
+            <div class="mt-8 text-center slide-in-up" style="transition-delay:0.2s">
+                <div class="inline-flex items-center gap-3 bg-lime/10 border border-lime/20 rounded-full px-6 py-3">
+                    <div class="w-2 h-2 bg-lime rounded-full animate-pulse"></div>
+                    <span class="text-lime text-sm font-medium" id="gymStatus">Checking gym status...</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Member Portal -->
+    <section id="portal" class="relative py-24 lg:py-32">
+        <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-lime/30 to-transparent"></div>
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 slide-in-up">
+                <span class="text-lime text-sm font-bold uppercase tracking-[4px]">Get Started</span>
+                <h2 class="font-display text-5xl sm:text-7xl tracking-wider mt-3">MEMBER <span class="lime-text">PORTAL</span></h2>
+                <p class="text-gray-400 mt-4 max-w-xl mx-auto">Sign up to start your fitness journey or sign in to manage your membership.</p>
+            </div>
+
+            <!-- Auth Container -->
+            <div id="authContainer" class="slide-in-up">
+                <!-- Tabs -->
+                <div class="flex justify-center mb-8">
+                    <div class="bg-charcoal border border-white/10 rounded-xl p-1.5 inline-flex">
+                        <button id="signupTab" onclick="switchTab('signup')" class="tab-active px-8 py-3 rounded-lg text-sm font-bold transition-all duration-300">SIGN UP</button>
+                        <button id="signinTab" onclick="switchTab('signin')" class="px-8 py-3 rounded-lg text-sm font-bold text-gray-400 hover:text-white transition-all duration-300">SIGN IN</button>
+                    </div>
+                </div>
+
+                <!-- Signup Form -->
+                <div id="signupForm" class="max-w-lg mx-auto">
+                    <div class="bg-charcoal border border-white/5 rounded-2xl p-8">
+                        <!-- Selected Plan Display -->
+                        <div id="selectedPlanDisplay" class="hidden mb-6 bg-lime/10 border border-lime/20 rounded-xl p-4">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="text-lime text-xs font-bold uppercase tracking-wider">Selected Plan</span>
+                                    <p class="text-white font-bold text-lg mt-1" id="selectedPlanName">—</p>
+                                </div>
+                                <div class="text-right">
+                                    <span class="font-display text-3xl lime-text" id="selectedPlanPrice">—</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-5">
+                            <div>
+                                <label class="text-gray-400 text-sm font-medium mb-2 block">Full Name</label>
+                                <input type="text" id="signupName" placeholder="Enter your full name" class="input-focus w-full bg-charcoal-deep border border-white/10 rounded-xl px-5 py-4 text-white text-sm placeholder-gray-600 outline-none transition-all duration-300">
+                            </div>
+                            <div>
+                                <label class="text-gray-400 text-sm font-medium mb-2 block">Email ID</label>
+                                <input type="email" id="signupEmail" placeholder="you@example.com" class="input-focus w-full bg-charcoal-deep border border-white/10 rounded-xl px-5 py-4 text-white text-sm placeholder-gray-600 outline-none transition-all duration-300">
+                            </div>
+                            <div>
+                                <label class="text-gray-400 text-sm font-medium mb-2 block">Phone Number</label>
+                                <div class="relative">
+                                    <span class="absolute left-5 top-1/2 -translate-y-1/2 text-gray-500 text-sm">+91</span>
+                                    <input type="tel" id="signupPhone" placeholder="98765 43210" maxlength="10" class="input-focus w-full bg-charcoal-deep border border-white/10 rounded-xl pl-14 pr-5 py-4 text-white text-sm placeholder-gray-600 outline-none transition-all duration-300">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="text-gray-400 text-sm font-medium mb-2 block">Select Plan</label>
+                                <select id="signupPlan" class="input-focus w-full bg-charcoal-deep border border-white/10 rounded-xl px-5 py-4 text-white text-sm outline-none transition-all duration-300 appearance-none cursor-pointer" style="background-image: url('data:image/svg+xml;utf8,<svg fill=\"%23999\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M7 10l5 5 5-5z\"/></svg>'); background-repeat: no-repeat; background-position: right 16px center; background-size: 20px;">
+                                    <option value="" class="bg-charcoal-deep">Choose a plan</option>
+                                    <option value="monthly" class="bg-charcoal-deep">Monthly — ₹2,500 (30 Days)</option>
+                                    <option value="quarterly" class="bg-charcoal-deep">Quarterly — ₹6,500 (90 Days)</option>
+                                    <option value="annual" class="bg-charcoal-deep">Annual — ₹18,000 (365 Days)</option>
+                                </select>
+                            </div>
+                            <button onclick="handleSignup()" class="glow-btn w-full py-4 lime-gradient rounded-xl font-extrabold text-charcoal-deep text-lg tracking-wide mt-2">
+                                CREATE ACCOUNT
+                            </button>
+                        </div>
+                        <p class="text-gray-600 text-xs text-center mt-6">By signing up, you agree to our terms and conditions.</p>
+                    </div>
+                </div>
+
+                <!-- Signin Form -->
+                <div id="signinForm" class="max-w-lg mx-auto hidden">
+                    <div class="bg-charcoal border border-white/5 rounded-2xl p-8">
+                        <div class="space-y-5">
+                            <div>
+                                <label class="text-gray-400 text-sm font-medium mb-2 block">Email ID</label>
+                                <input type="email" id="signinEmail" placeholder="you@example.com" class="input-focus w-full bg-charcoal-deep border border-white/10 rounded-xl px-5 py-4 text-white text-sm placeholder-gray-600 outline-none transition-all duration-300">
+                            </div>
+                            <div>
+                                <label class="text-gray-400 text-sm font-medium mb-2 block">Phone Number</label>
+                                <div class="relative">
+                                    <span class="absolute left-5 top-1/2 -translate-y-1/2 text-gray-500 text-sm">+91</span>
+                                    <input type="tel" id="signinPhone" placeholder="98765 43210" maxlength="10" class="input-focus w-full bg-charcoal-deep border border-white/10 rounded-xl pl-14 pr-5 py-4 text-white text-sm placeholder-gray-600 outline-none transition-all duration-300">
+                                </div>
+                            </div>
+                            <button onclick="handleSignin()" class="glow-btn w-full py-4 lime-gradient rounded-xl font-extrabold text-charcoal-deep text-lg tracking-wide mt-2">
+                                SIGN IN
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Section (Hidden by default) -->
+            <div id="profileSection" class="hidden max-w-2xl mx-auto">
+                <div class="bg-charcoal border border-white/5 rounded-2xl overflow-hidden">
+                    <!-- Profile Header -->
+                    <div class="relative bg-gradient-to-r from-charcoal-deep to-charcoal p-8 border-b border-white/5">
+                        <div class="flex items-center gap-6">
+                            <div class="w-20 h-20 lime-gradient rounded-2xl flex items-center justify-center flex-shrink-0">
+                                <span id="profileInitial" class="font-display text-4xl text-charcoal-deep">S</span>
+                            </div>
+                            <div>
+                                <h3 class="font-display text-3xl tracking-wider" id="profileName">MEMBER NAME</h3>
+                                <p class="text-gray-400 text-sm mt-1" id="profileEmail">email@example.com</p>
+                                <p class="text-gray-500 text-sm" id="profilePhone">+91 98765 43210</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Plan Details -->
+                    <div class="p-8">
+                        <div class="flex items-center justify-between mb-6">
+                            <h4 class="font-display text-2xl tracking-wider">YOUR <span class="lime-text">PLAN</span></h4>
+                            <button onclick="handleLogout()" class="text-red-400 text-sm font-medium hover:text-red-300 transition-colors flex items-center gap-2">
+                                <i class="fas fa-right-from-bracket"></i> Logout
+                            </button>
+                        </div>
+
+                        <div class="bg-charcoal-deep border border-white/5 rounded-xl p-6 mb-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <div>
+                                    <span class="text-gray-500 text-xs font-bold uppercase tracking-wider">Plan Type</span>
+                                    <p class="text-white font-bold text-xl mt-1" id="profilePlanType">Annual</p>
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-gray-500 text-xs font-bold uppercase tracking-wider">Amount Paid</span>
+                                    <p class="lime-text font-display text-3xl mt-1" id="profilePlanAmount">₹18,000</p>
+                                </div>
+                            </div>
+                            <div class="w-full h-px bg-white/5 my-4"></div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div>
+                                    <span class="text-gray-500 text-xs font-bold uppercase tracking-wider">Start Date</span>
+                                    <p class="text-white font-medium mt-1" id="profileStartDate">—</p>
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-gray-500 text-xs font-bold uppercase tracking-wider">Expiry Date</span>
+                                    <p class="text-white font-medium mt-1" id="profileExpiryDate">—</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Days Left -->
+                        <div class="bg-charcoal-deep border border-white/5 rounded-xl p-6 mb-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-gray-400 text-sm font-bold uppercase tracking-wider">Days Remaining</span>
+                                <span class="font-display text-4xl lime-text" id="profileDaysLeft">0</span>
+                            </div>
+                            <div class="w-full h-3 bg-white/5 rounded-full overflow-hidden">
+                                <div class="progress-bar h-full rounded-full" id="profileProgressBar" style="width: 0%"></div>
+                            </div>
+                            <p class="text-gray-500 text-xs mt-2" id="profileProgressText">0% of your plan completed</p>
+                        </div>
+
+                        <!-- Status -->
+                        <div id="planStatusBadge" class="flex items-center justify-center gap-2 bg-lime/10 border border-lime/20 rounded-xl py-4">
+                            <div class="w-2.5 h-2.5 bg-lime rounded-full animate-pulse"></div>
+                            <span class="text-lime font-bold text-sm">ACTIVE MEMBERSHIP</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location" class="relative py-24 lg:py-32 bg-charcoal-deep">
+        <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-lime/30 to-transparent"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 slide-in-up">
+                <span class="text-lime text-sm font-bold uppercase tracking-[4px]">Find Us</span>
+                <h2 class="font-display text-5xl sm:text-7xl tracking-wider mt-3">OUR <span class="lime-text">LOCATION</span></h2>
+            </div>
+
+            <div class="grid lg:grid-cols-5 gap-8 slide-in-up" style="transition-delay:0.1s">
+                <div class="lg:col-span-2 space-y-6">
+                    <div class="bg-charcoal border border-white/5 rounded-2xl p-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-lime/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-location-dot text-lime text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white mb-1">Address</h4>
+                                <p class="text-gray-400 text-sm leading-relaxed">Step 4 Gym, Near Civil Lines,<br>Patiala, Punjab 147001</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-charcoal border border-white/5 rounded-2xl p-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-lime/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-phone text-lime text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white mb-1">Contact</h4>
+                                <p class="text-gray-400 text-sm">+91 98765 43210</p>
+                                <p class="text-gray-400 text-sm">+91 97890 12345</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-charcoal border border-white/5 rounded-2xl p-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-lime/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-envelope text-lime text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white mb-1">Email</h4>
+                                <p class="text-gray-400 text-sm">info@step4gym.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="https://www.google.com/maps/search/Step+4+Gym+Patiala" target="_blank" class="glow-btn flex items-center justify-center gap-3 w-full py-4 lime-gradient rounded-xl font-extrabold text-charcoal-deep text-lg">
+                        <i class="fas fa-diamond-turn-right"></i> GET DIRECTIONS
+                    </a>
+                </div>
+                <div class="lg:col-span-3 rounded-2xl overflow-hidden border-2 border-white/5 h-[400px] lg:h-auto">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3430.2!2d76.3867!3d30.3395!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsDIwJzIyLjIiTiA3NsKwMjMnMTIuMSJF!5e0!3m2!1sen!2sin!4v1" width="100%" height="100%" style="border:0; filter: invert(90%) hue-rotate(180deg) brightness(0.9) contrast(1.1);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="relative bg-charcoal-deep border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-12">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 lime-gradient rounded-lg flex items-center justify-center">
+                            <span class="font-display text-2xl text-charcoal-deep">S4</span>
+                        </div>
+                        <div>
+                            <span class="font-display text-xl tracking-wider text-white">STEP 4</span>
+                            <span class="font-display text-xl tracking-wider lime-text"> GYM</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-500 text-sm leading-relaxed">Patiala's most trusted fitness destination. Transform your body, transform your life.</p>
+                    <div class="flex gap-3 mt-6">
+                        <a href="#" class="w-10 h-10 bg-charcoal border border-white/10 rounded-xl flex items-center justify-center text-gray-400 hover:bg-lime hover:text-charcoal-deep hover:border-lime transition-all duration-300"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 bg-charcoal border border-white/10 rounded-xl flex items-center justify-center text-gray-400 hover:bg-lime hover:text-charcoal-deep hover:border-lime transition-all duration-300"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 bg-charcoal border border-white/10 rounded-xl flex items-center justify-center text-gray-400 hover:bg-lime hover:text-charcoal-deep hover:border-lime transition-all duration-300"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="w-10 h-10 bg-charcoal border border-white/10 rounded-xl flex items-center justify-center text-gray-400 hover:bg-lime hover:text-charcoal-deep hover:border-lime transition-all duration-300"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-display text-xl tracking-wider mb-4">QUICK LINKS</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#services" class="text-gray-500 text-sm hover:text-lime transition-colors">Services</a></li>
+                        <li><a href="#plans" class="text-gray-500 text-sm hover:text-lime transition-colors">Membership Plans</a></li>
+                        <li><a href="#trainers" class="text-gray-500 text-sm hover:text-lime transition-colors">Our Trainers</a></li>
+                        <li><a href="#timings" class="text-gray-500 text-sm hover:text-lime transition-colors">Gym Timings</a></li>
+                        <li><a href="#portal" class="text-gray-500 text-sm hover:text-lime transition-colors">Member Portal</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-display text-xl tracking-wider mb-4">SERVICES</h4>
+                    <ul class="space-y-3">
+                        <li><span class="text-gray-500 text-sm">Strength Training</span></li>
+                        <li><span class="text-gray-500 text-sm">Cardio Zone</span></li>
+                        <li><span class="text-gray-500 text-sm">CrossFit</span></li>
+                        <li><span class="text-gray-500 text-sm">Steam Room</span></li>
+                        <li><span class="text-gray-500 text-sm">Personal Training</span></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-display text-xl tracking-wider mb-4">CONTACT</h4>
+                    <ul class="space-y-3">
+                        <li class="text-gray-500 text-sm flex items-start gap-2"><i class="fas fa-location-dot text-lime mt-1 text-xs"></i>Near Civil Lines, Patiala, Punjab 147001</li>
+                        <li class="text-gray-500 text-sm flex items-center gap-2"><i class="fas fa-phone text-lime text-xs"></i>+91 98765 43210</li>
+                        <li class="text-gray-500 text-sm flex items-center gap-2"><i class="fas fa-envelope text-lime text-xs"></i>info@step4gym.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-white/5 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p class="text-gray-600 text-sm">&copy; 2024 Step 4 Gym, Patiala. All rights reserved.</p>
+                <p class="text-gray-700 text-xs">Built with <span class="text-lime">♥</span> for fitness enthusiasts</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ==================== PARTICLES ====================
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 20; i++) {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            p.style.left = Math.random() * 100 + '%';
+            p.style.top = (50 + Math.random() * 50) + '%';
+            p.style.animationDelay = Math.random() * 4 + 's';
+            p.style.animationDuration = (3 + Math.random() * 3) + 's';
+            particlesContainer.appendChild(p);
+        }
+
+        // ==================== NAVBAR SCROLL ====================
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 80) {
+                navbar.classList.add('nav-blur', 'bg-charcoal-deep/90', 'border-b', 'border-white/5');
+            } else {
+                navbar.classList.remove('nav-blur', 'bg-charcoal-deep/90', 'border-b', 'border-white/5');
+            }
+        });
+
+        // ==================== MOBILE MENU ====================
+        const mobileMenu = document.getElementById('mobileMenu');
+        document.getElementById('mobileMenuBtn').addEventListener('click', () => mobileMenu.classList.add('open'));
+        document.getElementById('mobileMenuClose').addEventListener('click', () => mobileMenu.classList.remove('open'));
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+        });
+
+        // ==================== SCROLL ANIMATIONS ====================
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.slide-in-left, .slide-in-right, .slide-in-up').forEach(el => observer.observe(el));
+
+        // ==================== COUNTER ANIMATION ====================
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const target = parseInt(el.dataset.target);
+                    let current = 0;
+                    const increment = target / 60;
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            current = target;
+                            clearInterval(timer);
+                        }
+                        el.textContent = Math.floor(current) + '+';
+                    }, 30);
+                    counterObserver.unobserve(el);
+                }
+            });
+        }, { threshold: 0.5 });
+        document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+
+        // ==================== GYM STATUS ====================
+        function updateGymStatus() {
+            const now = new Date();
+            const day = now.getDay();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const timeNum = hours * 60 + minutes;
+
+            let isOpen = false;
+            let closeTime = '';
+
+            if (day >= 1 && day <= 6) {
+                isOpen = timeNum >= 330 && timeNum < 1320;
+                closeTime = '10:00 PM';
+            } else {
+                isOpen = timeNum >= 480 && timeNum < 720;
+                closeTime = '12:00 PM';
+            }
+
+            const statusEl = document.getElementById('gymStatus');
+            if (isOpen) {
+                statusEl.innerHTML = `<i class="fas fa-circle text-lime text-xs mr-1"></i> Gym is OPEN now — Closes at ${closeTime}`;
+            } else {
+                statusEl.innerHTML = `<i class="fas fa-circle text-red-500 text-xs mr-1"></i> Gym is currently CLOSED`;
+            }
+        }
+        updateGymStatus();
+        setInterval(updateGymStatus, 60000);
+
+        // ==================== TOAST NOTIFICATION ====================
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            const bgColor = type === 'success' ? 'bg-lime' : 'bg-red-500';
+            const textColor = type === 'success' ? 'text-charcoal-deep' : 'text-white';
+            const icon = type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle';
+            toast.className = `toast ${bgColor} ${textColor} px-6 py-4 rounded-xl font-bold text-sm flex items-center gap-3 shadow-2xl`;
+            toast.innerHTML = `<i class="fas ${icon}"></i> ${message}`;
+            container.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+        }
+
+        // ==================== PLAN SELECTION ====================
+        let selectedPlan = { name: '', price: 0, days: 0 };
+
+        function selectPlan(plan, price, days) {
+            selectedPlan = {
+                name: plan.charAt(0).toUpperCase() + plan.slice(1),
+                price: price,
+                days: days
+            };
+
+            document.getElementById('selectedPlanDisplay').classList.remove('hidden');
+            document.getElementById('selectedPlanName').textContent = selectedPlan.name + ' Plan';
+            document.getElementById('selectedPlanPrice').textContent = '₹' + selectedPlan.price.toLocaleString('en-IN');
+
+            document.getElementById('signupPlan').value = plan;
+
+            document.getElementById('portal').scrollIntoView({ behavior: 'smooth' });
+            switchTab('signup');
+        }
+
+        // ==================== AUTH TABS ====================
+        function switchTab(tab) {
+            const signupTab = document.getElementById('signupTab');
+            const signinTab = document.getElementById('signinTab');
+            const signupForm = document.getElementById('signupForm');
+            const signinForm = document.getElementById('signinForm');
+
+            if (tab === 'signup') {
+                signupTab.classList.add('tab-active');
+                signinTab.classList.remove('tab-active');
+                signinTab.classList.add('text-gray-400');
+                signupForm.classList.remove('hidden');
+                signinForm.classList.add('hidden');
+            } else {
+                signinTab.classList.add('tab-active');
+                signupTab.classList.remove('tab-active');
+                signupTab.classList.add('text-gray-400');
+                signinForm.classList.remove('hidden');
+                signupForm.classList.add('hidden');
+            }
+        }
+
+        // ==================== SIGNUP ====================
+        function handleSignup() {
+            const name = document.getElementById('signupName').value.trim();
+            const email = document.getElementById('signupEmail').value.trim();
+            const phone = document.getElementById('signupPhone').value.trim();
+            const plan = document.getElementById('signupPlan').value;
+
+            if (!name) { showToast('Please enter your full name', 'error'); return; }
+            if (!email || !email.includes('@')) { showToast('Please enter a valid email', 'error'); return; }
+            if (!phone || phone.length !== 10 || !/^\d{10}$/.test(phone)) { showToast('Please enter a valid 10-digit phone number', 'error'); return; }
+            if (!plan) { showToast('Please select a membership plan', 'error'); return; }
+
+            const planDetails = {
+                monthly: { price: 2500, days: 30, label: 'Monthly' },
+                quarterly: { price: 6500, days: 90, label: 'Quarterly' },
+                annual: { price: 18000, days: 365, label: 'Annual' }
+            };
+
+            const selected = planDetails[plan];
+            const startDate = new Date();
+            const expiryDate = new Date(startDate.getTime() + selected.days * 24 * 60 * 60 * 1000);
+
+            const member = {
+                name: name,
+                email: email,
+                phone: phone,
+                plan: plan,
+                planLabel: selected.label,
+                price: selected.price,
+                totalDays: selected.days,
+                startDate: startDate.toISOString(),
+                expiryDate: expiryDate.toISOString()
+            };
+
+            localStorage.setItem('step4member', JSON.stringify(member));
+            showToast('Welcome to Step 4 Gym, ' + name.split(' ')[0] + '! 🎉');
+            showProfile(member);
+        }
+
+        // ==================== SIGNIN ====================
+        function handleSignin() {
+            const email = document.getElementById('signinEmail').value.trim();
+            const phone = document.getElementById('signinPhone').value.trim();
+
+            if (!email || !email.includes('@')) { showToast('Please enter a valid email', 'error'); return; }
+            if (!phone || phone.length !== 10 || !/^\d{10}$/.test(phone)) { showToast('Please enter a valid 10-digit phone number', 'error'); return; }
+
+            const stored = localStorage.getItem('step4member');
+            if (!stored) { showToast('No account found. Please sign up first.', 'error'); return; }
+
+            const member = JSON.parse(stored);
+            if (member.email !== email || member.phone !== phone) {
+                showToast('Invalid credentials. Check your email and phone.', 'error');
+                return;
+            }
+
+            // Check if plan expired
+            const now = new Date();
+            const expiry = new Date(member.expiryDate);
+            if (now > expiry) {
+                showToast('Your plan has expired! Please renew.', 'error');
+                return;
+            }
+
+            showToast('Welcome back, ' + member.name.split(' ')[0] + '! 💪');
+            showProfile(member);
+        }
+
+        // ==================== SHOW PROFILE ====================
+        function showProfile(member) {
+            document.getElementById('authContainer').classList.add('hidden');
+            document.getElementById('profileSection').classList.remove('hidden');
+
+            const initials = member.name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+            document.getElementById('profileInitial').textContent = initials;
+            document.getElementById('profileName').textContent = member.name.toUpperCase();
+            document.getElementById('profileEmail').textContent = member.email;
+            document.getElementById('profilePhone').textContent = '+91 ' + member.phone;
+
+            document.getElementById('profilePlanType').textContent = member.planLabel + ' Plan';
+            document.getElementById('profilePlanAmount').textContent = '₹' + member.price.toLocaleString('en-IN');
+
+            const startDate = new Date(member.startDate);
+            const expiryDate = new Date(member.expiryDate);
+            document.getElementById('profileStartDate').textContent = startDate.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+            document.getElementById('profileExpiryDate').textContent = expiryDate.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+
+            updateDaysLeft(member);
+        }
+
+        function updateDaysLeft(member) {
+            const now = new Date();
+            const expiry = new Date(member.expiryDate);
+            const start = new Date(member.startDate);
+            const totalMs = expiry - start;
+            const remainingMs = expiry - now;
+            const daysLeft = Math.max(0, Math.ceil(remainingMs / (1000 * 60 * 60 * 24)));
+            const elapsed = now - start;
+            const progress = Math.min(100, Math.max(0, (elapsed / totalMs) * 100));
+
+            document.getElementById('profileDaysLeft').textContent = daysLeft;
+            document.getElementById('profileProgressBar').style.width = progress.toFixed(1) + '%';
+            document.getElementById('profileProgressText').textContent = progress.toFixed(1) + '% of your plan completed';
+
+            const badge = document.getElementById('planStatusBadge');
+            if (daysLeft <= 0) {
+                badge.className = 'flex items-center justify-center gap-2 bg-red-500/10 border border-red-500/20 rounded-xl py-4';
+                badge.innerHTML = '<div class="w-2.5 h-2.5 bg-red-500 rounded-full"></div><span class="text-red-400 font-bold text-sm">PLAN EXPIRED — Please Renew</span>';
+            } else if (daysLeft <= 7) {
+                badge.className = 'flex items-center justify-center gap-2 bg-yellow-500/10 border border-yellow-500/20 rounded-xl py-4';
+                badge.innerHTML = '<div class="w-2.5 h-2.5 bg-yellow-500 rounded-full animate-pulse"></div><span class="text-yellow-400 font-bold text-sm">EXPIRING SOON — ' + daysLeft + ' Days Left</span>';
+            } else {
+                badge.className = 'flex items-center justify-center gap-2 bg-lime/10 border border-lime/20 rounded-xl py-4';
+                badge.innerHTML = '<div class="w-2.5 h-2.5 bg-lime rounded-full animate-pulse"></div><span class="text-lime font-bold text-sm">ACTIVE MEMBERSHIP</span>';
+            }
+        }
+
+        // ==================== LOGOUT ====================
+        function handleLogout() {
+            document.getElementById('authContainer').classList.remove('hidden');
+            document.getElementById('profileSection').classList.add('hidden');
+            document.getElementById('signinEmail').value = '';
+            document.getElementById('signinPhone').value = '';
+            switchTab('signin');
+            showToast('Logged out successfully');
+        }
+
+        // ==================== AUTO-LOGIN CHECK ====================
+        window.addEventListener('DOMContentLoaded', () => {
+            const stored = localStorage.getItem('step4member');
+            if (stored) {
+                const member = JSON.parse(stored);
+                const now = new Date();
+                const expiry = new Date(member.expiryDate);
+                if (now <= expiry) {
+                    showProfile(member);
+                }
+            }
+        });
+
+        // ==================== PLAN SELECT LISTENER ====================
+        document.getElementById('signupPlan').addEventListener('change', function() {
+            if (this.value) {
+                const planDetails = {
+                    monthly: { price: 2500, days: 30, label: 'Monthly' },
+                    quarterly: { price: 6500, days: 90, label: 'Quarterly' },
+                    annual: { price: 18000, days: 365, label: 'Annual' }
+                };
+                const selected = planDetails[this.value];
+                document.getElementById('selectedPlanDisplay').classList.remove('hidden');
+                document.getElementById('selectedPlanName').textContent = selected.label + ' Plan';
+                document.getElementById('selectedPlanPrice').textContent = '₹' + selected.price.toLocaleString('en-IN');
+            }
+        });
+
+        // ==================== PHONE NUMBER FORMATTING ====================
+        document.querySelectorAll('input[type="tel"]').forEach(input => {
+            input.addEventListener('input', function() {
+                this.value = this.value.replace(/[^0-9]/g, '');
+            });
+        });
+    </script>
+</body>
+</html>
